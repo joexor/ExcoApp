@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "564536340270",
+    "project_id": "excoapp-8ecf0",
+    "storage_bucket": "excoapp-8ecf0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:564536340270:android:6d8e15fd4071f12b5f94bf",
+        "android_client_info": {
+          "package_name": "com.JoexorArcofe.excoapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "564536340270-6krt1l3egliggkd7csqei8rm5gh2nvub.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCani5SLvDZDxDmvVFr3RFw021zml6RwnE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "564536340270-6krt1l3egliggkd7csqei8rm5gh2nvub.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
