@@ -1,4 +1,4 @@
-package com.ArcofeJoexor.excoapp;
+package com.JoexorArcofe.excoapp;
 
 import android.graphics.Color;
 import android.os.Bundle;
@@ -11,7 +11,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.ArcofeJoexor.excoapp.Model.Preguntes;
+import com.JoexorArcofe.excoapp.Model.Preguntes;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;

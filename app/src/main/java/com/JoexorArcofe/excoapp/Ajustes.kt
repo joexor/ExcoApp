@@ -1,4 +1,4 @@
-package com.ArcofeJoexor.excoapp
+package com.JoexorArcofe.excoapp
 
 import android.content.Intent
 import android.media.Image
