@@ -62,6 +62,7 @@ public class Quiz extends AppCompatActivity {
                     r3.setText(question.getOption3());
                     r4.setText(question.getOption4());
 
+                    System.out.println(question.getOption1());
                     r1.setOnClickListener(v -> {
                         if (r1.getText().toString().equals(question.getAnswer())) {
                             r1.setBackgroundColor(Color.GREEN);
