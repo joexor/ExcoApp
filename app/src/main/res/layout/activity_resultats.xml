@@ -66,7 +66,7 @@
         app:srcCompat="@drawable/usuario" />
 
     <TextView
-        android:id="@+id/textView10"
+        android:id="@+id/TitolResultat"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="RESULTADO FINAL!"
@@ -80,7 +80,7 @@
         app:layout_constraintVertical_bias="0.259" />
 
     <TextView
-        android:id="@+id/textView12"
+        android:id="@+id/Aciertos"
         android:layout_width="136dp"
         android:layout_height="40dp"
         android:text="Aciertos"
@@ -94,7 +94,7 @@
         app:layout_constraintVertical_bias="0.523" />
 
     <TextView
-        android:id="@+id/textView13"
+        android:id="@+id/Fallos"
         android:layout_width="136dp"
         android:layout_height="40dp"
         android:text="Fallos"
@@ -105,10 +105,10 @@
         app:layout_constraintHorizontal_bias="0.756"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.635" />
+        app:layout_constraintVertical_bias="0.649" />
 
     <TextView
-        android:id="@+id/textView11"
+        android:id="@+id/TitolResultat2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="RESULTADO FINAL ES:"
@@ -122,7 +122,7 @@
         app:layout_constraintVertical_bias="0.38" />
 
     <ImageView
-        android:id="@+id/imageView4"
+        android:id="@+id/Cros"
         android:layout_width="66dp"
         android:layout_height="71dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -134,7 +134,7 @@
         app:srcCompat="@android:drawable/ic_delete" />
 
     <ImageView
-        android:id="@+id/imageView7"
+        android:id="@+id/Check"
         android:layout_width="67dp"
         android:layout_height="73dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -144,5 +144,29 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.522"
         app:srcCompat="@drawable/tick" />
+
+    <TextView
+        android:id="@+id/NumAciertos"
+        android:layout_width="59dp"
+        android:layout_height="55dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.382"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.526" />
+
+    <TextView
+        android:id="@+id/NumFallos"
+        android:layout_width="61dp"
+        android:layout_height="50dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.382"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.644" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
