@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -13,6 +14,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.JoexorArcofe.excoapp.Model.Preguntes;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -21,10 +24,15 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.ktx.Firebase;
 
 import java.sql.SQLOutput;
+import java.util.ArrayList;
 
 public class Quiz extends AppCompatActivity {
+
+    final int MAX_PREGUNTES = 10;
+
     Button r1, r2, r3, r4;
-    TextView pregunta;
+    TextView pregunta, user;
+    ImageButton ajustes;
     int total = 1;
     int correct = 0;
     int wrong = 0;
@@ -34,48 +42,66 @@ public class Quiz extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.quiz);
 
+        user = (TextView) findViewById(R.id.usuario);
+        ajustes = (ImageButton) findViewById(R.id.ajustesTema);
         r1 = (Button) findViewById(R.id.respuesta1);
         r2 = (Button) findViewById(R.id.respuesta2);
         r3 = (Button) findViewById(R.id.respuesta3);
         r4 = (Button) findViewById(R.id.respuesta4);
-
         pregunta = (TextView) findViewById(R.id.preguntes);
-        System.out.println("Antes del Update");
+
+        FirebaseUser email = FirebaseAuth.getInstance().getCurrentUser();
+
+        String mail = email.getEmail();
+        String[] usuario = mail.split(String.valueOf('@'));
+        user.setText(usuario[0]);
+
         updateQuestions();
+
+        ajustes.setOnClickListener(v->{
+            Intent intent = new Intent(this, Ajustes.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(intent);
+        });
 
     }
 
     private void updateQuestions() {
-        System.out.println("Dins del Update");
-        if (total > 10) {
+        if (total > MAX_PREGUNTES) {
             Intent intent = new Intent(this, Inici.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(intent);
         } else {
             reference = FirebaseDatabase.getInstance().getReference().child("Questions").child(String.valueOf(total));
-            System.out.println("Aqui BD: " + reference);
             reference.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
-                    Preguntes question = snapshot.getValue(Preguntes.class);
+                    //Preguntes question = snapshot.getValue(Preguntes.class);
+                    Preguntes question = new Preguntes(snapshot.child("Question").getValue().toString(),
+                            snapshot.child("Option1").getValue().toString(), snapshot.child("Option2").getValue().toString(),
+                            snapshot.child("Option3").getValue().toString(), snapshot.child("Option4").getValue().toString(),
+                            snapshot.child("Answere").getValue().toString());
 
-                    /*pregunta.setText(question.getQuestion());
+                    pregunta.setText(question.getQuestion());
                     r1.setText(question.getOption1());
                     r2.setText(question.getOption2());
                     r3.setText(question.getOption3());
                     r4.setText(question.getOption4());
-*/
-                    String p = snapshot.child("Question").getValue().toString();
+
+                    /*String p = snapshot.child("Question").getValue().toString();
                     String op1 = snapshot.child("Option1").getValue().toString();
                     String op2 = snapshot.child("Option2").getValue().toString();
                     String op3 = snapshot.child("Option3").getValue().toString();
                     String op4 = snapshot.child("Option4").getValue().toString();
                     String r = snapshot.child("Answere").getValue().toString();
-                    pregunta.setText(p);
+
+                    pregunta.setText(arrayPreguntes.get());
                     r1.setText(op1);
                     r2.setText(op2);
                     r3.setText(op3);
-                    r4.setText(op4);
+                    r4.setText(op4);*/
+
+
                     System.out.println(question.getOption1());
                     r1.setOnClickListener(v -> {
                         if (r1.getText().toString().equals(question.getAnswer())) {
@@ -122,8 +148,8 @@ public class Quiz extends AppCompatActivity {
                     });
 
                     r2.setOnClickListener(v -> {
-                        //if (r2.getText().toString().equals(question.getAnswer())) {
-                        if (r2.getText().toString().equals(r)) {
+                        if (r2.getText().toString().equals(question.getAnswer())) {
+                        //if (r2.getText().toString().equals(r)) {
                             r2.setBackgroundColor(Color.GREEN);
                             Handler handler = new Handler();
                             handler.postDelayed(() -> {
