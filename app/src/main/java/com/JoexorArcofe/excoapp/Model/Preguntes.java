@@ -13,7 +13,6 @@ public class Preguntes {
     }
 
     public Preguntes(){
-
     }
 
     public String getQuestion() {
