@@ -11,8 +11,8 @@
 
     <View
         android:id="@+id/view"
-        android:layout_width="416dp"
-        android:layout_height="72dp"
+        android:layout_width="416sp"
+        android:layout_height="72sp"
         android:background="@color/Secundary"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -23,8 +23,8 @@
 
     <TextView
         android:id="@+id/usuario"
-        android:layout_width="184dp"
-        android:layout_height="43dp"
+        android:layout_width="184sp"
+        android:layout_height="43sp"
         android:gravity="center_horizontal"
         android:text="usuario"
         android:textStyle="bold"
@@ -40,9 +40,9 @@
         app:layout_constraintVertical_bias="0.023" />
 
     <ImageButton
-        android:id="@+id/ajustesTema"
-        android:layout_width="82dp"
-        android:layout_height="73dp"
+        android:id="@+id/ajustesResultats"
+        android:layout_width="82sp"
+        android:layout_height="73sp"
         android:scaleType="fitStart"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -54,8 +54,8 @@
 
     <ImageButton
         android:id="@+id/imageButton3"
-        android:layout_width="80dp"
-        android:layout_height="71dp"
+        android:layout_width="80sp"
+        android:layout_height="71sp"
         android:scaleType="fitStart"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -71,7 +71,7 @@
         android:layout_height="wrap_content"
         android:text="RESULTADO FINAL!"
         android:textColor="@color/black"
-        android:textSize="30dp"
+        android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -81,11 +81,11 @@
 
     <TextView
         android:id="@+id/Aciertos"
-        android:layout_width="136dp"
-        android:layout_height="40dp"
+        android:layout_width="136sp"
+        android:layout_height="40sp"
         android:text="Aciertos"
         android:textColor="@color/black"
-        android:textSize="30dp"
+        android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.756"
@@ -95,11 +95,11 @@
 
     <TextView
         android:id="@+id/Fallos"
-        android:layout_width="136dp"
-        android:layout_height="40dp"
+        android:layout_width="136sp"
+        android:layout_height="40sp"
         android:text="Fallos"
         android:textColor="@color/black"
-        android:textSize="30dp"
+        android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.756"
@@ -113,7 +113,7 @@
         android:layout_height="wrap_content"
         android:text="RESULTADO FINAL ES:"
         android:textColor="@color/black"
-        android:textSize="30dp"
+        android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
@@ -123,8 +123,8 @@
 
     <ImageView
         android:id="@+id/Cros"
-        android:layout_width="66dp"
-        android:layout_height="71dp"
+        android:layout_width="66sp"
+        android:layout_height="71sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.156"
@@ -135,8 +135,8 @@
 
     <ImageView
         android:id="@+id/Check"
-        android:layout_width="67dp"
-        android:layout_height="73dp"
+        android:layout_width="67sp"
+        android:layout_height="73sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.154"
@@ -147,8 +147,8 @@
 
     <TextView
         android:id="@+id/NumAciertos"
-        android:layout_width="52dp"
-        android:layout_height="45dp"
+        android:layout_width="52sp"
+        android:layout_height="45sp"
         android:gravity="center_horizontal"
         android:text="TextView"
         android:textAlignment="center"
@@ -163,13 +163,13 @@
 
     <TextView
         android:id="@+id/NumFallos"
-        android:layout_width="52dp"
-        android:layout_height="43dp"
+        android:layout_width="52sp"
+        android:layout_height="43sp"
         android:gravity="center_horizontal"
         android:text="TextView"
         android:textAlignment="center"
         android:textColor="@color/black"
-        android:textSize="30dp"
+        android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.373"
@@ -179,9 +179,9 @@
 
     <Button
         android:id="@+id/GoInici"
-        android:layout_width="228dp"
-        android:layout_height="63dp"
-        android:textSize="22dp"
+        android:layout_width="228sp"
+        android:layout_height="63sp"
+        android:textSize="22sp"
         android:text="INICIO"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -191,9 +191,9 @@
 
     <Button
         android:id="@+id/Restart"
-        android:layout_width="228dp"
-        android:layout_height="63dp"
-        android:textSize="22dp"
+        android:layout_width="228sp"
+        android:layout_height="63sp"
+        android:textSize="22sp"
         android:text="REINTENTARLO"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

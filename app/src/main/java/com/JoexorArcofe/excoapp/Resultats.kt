@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
+import android.widget.ImageButton
 import android.widget.TextView
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
@@ -15,6 +16,7 @@ class Resultats : AppCompatActivity(), View.OnClickListener {
     private var incorrecte: TextView? = null
     private var inicio: Button? = null
     private var reintentar: Button? = null
+    private var ajustes: ImageButton? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,6 +26,7 @@ class Resultats : AppCompatActivity(), View.OnClickListener {
         incorrecte =  findViewById<TextView>(R.id.NumFallos)
         inicio = findViewById<Button>(R.id.GoInici)
         reintentar = findViewById<Button>(R.id.Restart)
+        ajustes =  findViewById<ImageButton>(R.id.ajustesResultats)
 
         var currentuser = Firebase.auth.currentUser
         var usuario = findViewById<TextView>(R.id.usuario)
@@ -39,6 +42,7 @@ class Resultats : AppCompatActivity(), View.OnClickListener {
         incorrecte!!.setText(numWrong)
         inicio!!.setOnClickListener(this)
         reintentar!!.setOnClickListener(this)
+        ajustes!!.setOnClickListener(this)
     }
 
     override fun onClick(v: View?) {
@@ -51,6 +55,12 @@ class Resultats : AppCompatActivity(), View.OnClickListener {
 
             R.id.Restart -> {
                 val intent = Intent(this,Quiz::class.java)
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                startActivity(intent)
+            }
+
+            R.id.ajustesResultats -> {
+                val intent = Intent(this,Ajustes::class.java)
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
                 startActivity(intent)
             }
