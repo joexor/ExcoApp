@@ -45,7 +45,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.108"
+        app:layout_constraintVertical_bias="0.118"
         app:srcCompat="@drawable/abc_vector_test"
         tools:ignore="MissingConstraints" />
 
@@ -105,7 +105,8 @@
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.354" />
+        app:layout_constraintVertical_bias="0.354"
+        android:gravity="center_horizontal" />
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tabLayout2"
