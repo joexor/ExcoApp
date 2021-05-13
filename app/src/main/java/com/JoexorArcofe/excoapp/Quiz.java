@@ -22,6 +22,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.ktx.Firebase;
+import com.google.protobuf.StringValue;
 
 import java.sql.SQLOutput;
 import java.util.ArrayList;
@@ -68,8 +69,10 @@ public class Quiz extends AppCompatActivity {
 
     private void updateQuestions() {
         if (total > MAX_PREGUNTES) {
-            Intent intent = new Intent(this, Inici.class);
+            Intent intent = new Intent(this, Resultats.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            intent.putExtra("correcte", String.valueOf(correct));
+            intent.putExtra("incorrecte",String.valueOf(wrong));
             startActivity(intent);
         } else {
             reference = FirebaseDatabase.getInstance().getReference().child("Questions").child(String.valueOf(total));
@@ -87,20 +90,6 @@ public class Quiz extends AppCompatActivity {
                     r2.setText(question.getOption2());
                     r3.setText(question.getOption3());
                     r4.setText(question.getOption4());
-
-                    /*String p = snapshot.child("Question").getValue().toString();
-                    String op1 = snapshot.child("Option1").getValue().toString();
-                    String op2 = snapshot.child("Option2").getValue().toString();
-                    String op3 = snapshot.child("Option3").getValue().toString();
-                    String op4 = snapshot.child("Option4").getValue().toString();
-                    String r = snapshot.child("Answere").getValue().toString();
-
-                    pregunta.setText(arrayPreguntes.get());
-                    r1.setText(op1);
-                    r2.setText(op2);
-                    r3.setText(op3);
-                    r4.setText(op4);*/
-
 
                     System.out.println(question.getOption1());
                     r1.setOnClickListener(v -> {
@@ -134,7 +123,6 @@ public class Quiz extends AppCompatActivity {
 
                             Handler handler = new Handler();
                             handler.postDelayed(() -> {
-                                correct++;
                                 r1.setBackgroundColor(Color.parseColor("#03A9F4"));
                                 r2.setBackgroundColor(Color.parseColor("#03A9F4"));
                                 r3.setBackgroundColor(Color.parseColor("#03A9F4"));
@@ -179,7 +167,6 @@ public class Quiz extends AppCompatActivity {
 
                             Handler handler = new Handler();
                             handler.postDelayed(() -> {
-                                correct++;
                                 r1.setBackgroundColor(Color.parseColor("#03A9F4"));
                                 r2.setBackgroundColor(Color.parseColor("#03A9F4"));
                                 r3.setBackgroundColor(Color.parseColor("#03A9F4"));
@@ -222,7 +209,6 @@ public class Quiz extends AppCompatActivity {
 
                             Handler handler = new Handler();
                             handler.postDelayed(() -> {
-                                correct++;
                                 r1.setBackgroundColor(Color.parseColor("#03A9F4"));
                                 r2.setBackgroundColor(Color.parseColor("#03A9F4"));
                                 r3.setBackgroundColor(Color.parseColor("#03A9F4"));
@@ -265,7 +251,6 @@ public class Quiz extends AppCompatActivity {
 
                             Handler handler = new Handler();
                             handler.postDelayed(() -> {
-                                correct++;
                                 r1.setBackgroundColor(Color.parseColor("#03A9F4"));
                                 r2.setBackgroundColor(Color.parseColor("#03A9F4"));
                                 r3.setBackgroundColor(Color.parseColor("#03A9F4"));
