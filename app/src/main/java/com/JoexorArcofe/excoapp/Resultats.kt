@@ -26,4 +26,6 @@ class Resultats : AppCompatActivity() {
         correcte!!.setText(numCorrect)
         incorrecte!!.setText(numWrong)
     }
+
+
 }

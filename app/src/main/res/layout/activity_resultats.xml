@@ -147,30 +147,38 @@
 
     <TextView
         android:id="@+id/NumAciertos"
-        android:layout_width="59dp"
-        android:layout_height="55dp"
+        android:layout_width="52dp"
+        android:layout_height="45dp"
+        android:gravity="center_horizontal"
         android:text="TextView"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="30dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.382"
+        app:layout_constraintHorizontal_bias="0.373"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.526" />
+        app:layout_constraintVertical_bias="0.527" />
 
     <TextView
         android:id="@+id/NumFallos"
-        android:layout_width="61dp"
-        android:layout_height="50dp"
+        android:layout_width="52dp"
+        android:layout_height="43dp"
+        android:gravity="center_horizontal"
         android:text="TextView"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="30dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.382"
+        app:layout_constraintHorizontal_bias="0.373"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.644" />
+        app:layout_constraintVertical_bias="0.652" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/GoInici"
         android:layout_width="228dp"
         android:layout_height="63dp"
         android:textSize="22dp"
@@ -182,7 +190,7 @@
         app:layout_constraintVertical_bias="0.784" />
 
     <Button
-        android:id="@+id/button4"
+        android:id="@+id/Restart"
         android:layout_width="228dp"
         android:layout_height="63dp"
         android:textSize="22dp"
