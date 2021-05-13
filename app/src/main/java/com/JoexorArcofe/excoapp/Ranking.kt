@@ -21,9 +21,9 @@ class Ranking: AppCompatActivity(), View.OnClickListener {
         setContentView(R.layout.ranking)
 
         btnAjustes = findViewById<ImageButton>(R.id.ajustesRanking)
-        btnAjustes = findViewById<ImageButton>(R.id.ajustesTema)
+        btnAtras = findViewById<ImageView>(R.id.atras)
         btnAjustes!!.setOnClickListener(this)
-        btnAjustes!!.setOnClickListener(this)
+        btnAtras!!.setOnClickListener(this)
 
 
         var currentuser = Firebase.auth.currentUser
