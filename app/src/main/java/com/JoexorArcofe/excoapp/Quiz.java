@@ -104,7 +104,7 @@ public class Quiz extends AppCompatActivity {
                                 r1.setBackgroundColor(Color.parseColor("#03A9F4"));
                                 total++;
                                 updateQuestions();
-                            }, 1500);
+                            }, 1000);
                         } else {
                             wrong++;
                             r1.setBackgroundColor(Color.RED);
@@ -131,7 +131,7 @@ public class Quiz extends AppCompatActivity {
                                 r4.setBackgroundColor(Color.parseColor("#03A9F4"));
                                 total++;
                                 updateQuestions();
-                            }, 1500);
+                            }, 1000);
 
                         }
 
@@ -148,7 +148,7 @@ public class Quiz extends AppCompatActivity {
                                 r2.setBackgroundColor(Color.parseColor("#03A9F4"));
                                 total++;
                                 updateQuestions();
-                            }, 1500);
+                            }, 1000);
                         } else {
                             wrong++;
                             r2.setBackgroundColor(Color.RED);
@@ -175,7 +175,7 @@ public class Quiz extends AppCompatActivity {
                                 r4.setBackgroundColor(Color.parseColor("#03A9F4"));
                                 total++;
                                 updateQuestions();
-                            }, 1500);
+                            }, 1000);
 
                         }
                     });
@@ -190,7 +190,7 @@ public class Quiz extends AppCompatActivity {
                                 r3.setBackgroundColor(Color.parseColor("#03A9F4"));
                                 total++;
                                 updateQuestions();
-                            }, 1500);
+                            }, 1000);
                         } else {
                             wrong++;
                             r3.setBackgroundColor(Color.RED);
@@ -217,7 +217,7 @@ public class Quiz extends AppCompatActivity {
                                 r4.setBackgroundColor(Color.parseColor("#03A9F4"));
                                 total++;
                                 updateQuestions();
-                            }, 1500);
+                            }, 1000);
 
                         }
                     });
@@ -232,7 +232,7 @@ public class Quiz extends AppCompatActivity {
                                 r4.setBackgroundColor(Color.parseColor("#03A9F4"));
                                 total++;
                                 updateQuestions();
-                            }, 1500);
+                            }, 1000);
                         } else {
                             wrong++;
                             r4.setBackgroundColor(Color.RED);
@@ -259,7 +259,7 @@ public class Quiz extends AppCompatActivity {
                                 r4.setBackgroundColor(Color.parseColor("#03A9F4"));
                                 total++;
                                 updateQuestions();
-                            }, 1500);
+                            }, 1000);
 
                         }
                     });
