@@ -32,7 +32,7 @@ public class Quiz extends AppCompatActivity {
     final int MAX_PREGUNTES = 10;
 
     Button r1, r2, r3, r4;
-    TextView pregunta, user;
+    TextView pregunta, user, numQuestion;
     ImageButton ajustes;
     int total = 1;
     int correct = 0;
@@ -50,6 +50,7 @@ public class Quiz extends AppCompatActivity {
         r3 = (Button) findViewById(R.id.respuesta3);
         r4 = (Button) findViewById(R.id.respuesta4);
         pregunta = (TextView) findViewById(R.id.preguntes);
+        numQuestion = (TextView) findViewById(R.id.numPregunta);
 
         FirebaseUser email = FirebaseAuth.getInstance().getCurrentUser();
 
@@ -85,6 +86,7 @@ public class Quiz extends AppCompatActivity {
                             snapshot.child("Option3").getValue().toString(), snapshot.child("Option4").getValue().toString(),
                             snapshot.child("Answere").getValue().toString());
 
+                    numQuestion.setText(total+"/"+MAX_PREGUNTES);
                     pregunta.setText(question.getQuestion());
                     r1.setText(question.getOption1());
                     r2.setText(question.getOption2());

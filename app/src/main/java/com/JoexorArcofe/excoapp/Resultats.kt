@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 
 class Resultats : AppCompatActivity() {
 
@@ -17,6 +19,11 @@ class Resultats : AppCompatActivity() {
 
         correcte =  findViewById<TextView>(R.id.NumAciertos)
         incorrecte =  findViewById<TextView>(R.id.NumFallos)
+
+        var currentuser = Firebase.auth.currentUser
+        var usuario = findViewById<TextView>(R.id.usuario)
+        val user = currentuser?.email?.split('@')
+        usuario.text = user?.get(0)
 
         val i = intent
 
