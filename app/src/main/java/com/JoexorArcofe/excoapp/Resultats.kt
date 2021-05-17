@@ -46,6 +46,8 @@ class Resultats : AppCompatActivity(), View.OnClickListener {
     }
 
     override fun onClick(v: View?) {
+        val i = intent
+        val tema = i.getStringExtra("Tema")
         when(v?.id){
             R.id.GoInici -> {
                 val intent = Intent(this,Inici::class.java)
@@ -56,6 +58,7 @@ class Resultats : AppCompatActivity(), View.OnClickListener {
             R.id.Restart -> {
                 val intent = Intent(this,Quiz::class.java)
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                intent.putExtra("Tema",tema)
                 startActivity(intent)
             }
 
@@ -66,6 +69,4 @@ class Resultats : AppCompatActivity(), View.OnClickListener {
             }
         }
     }
-
-
 }
