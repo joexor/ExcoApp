@@ -90,17 +90,17 @@
 
     <TextView
         android:id="@+id/preguntes"
-        android:layout_width="352dp"
-        android:layout_height="60sp"
+        android:layout_width="354dp"
+        android:layout_height="101dp"
         android:text="TextView"
         android:textColor="@color/black"
         android:textSize="25sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.406"
+        app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.195"
+        app:layout_constraintVertical_bias="0.204"
         tools:ignore="MissingConstraints" />
 
     <TextView
@@ -108,31 +108,31 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginLeft="30dp"
         android:layout_marginEnd="325dp"
+        android:layout_marginRight="325dp"
         android:layout_marginBottom="15dp"
         android:text="@string/pregunta"
         android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/preguntes"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.24"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0"
-        android:layout_marginRight="325dp"
-        android:layout_marginLeft="30dp" />
+        app:layout_constraintVertical_bias="0.129" />
 
     <View
         android:id="@+id/linea"
         android:layout_width="match_parent"
         android:layout_height="3dp"
         android:layout_below="@id/label_pregunta"
-        android:layout_marginTop="8dp"
         android:background="#FF0000"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/preguntes"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.337"
         tools:ignore="MissingConstraints" />
 
     <Button
