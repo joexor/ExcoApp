@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.widget.Button
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
@@ -14,6 +15,9 @@ class TriarTema: AppCompatActivity(), View.OnClickListener {
 
     private var btnAtras: ImageView? = null
     private var btnAjustes: ImageButton? = null
+    private var btnTema1: Button? = null
+    private var btnTema2: Button? = null
+    private var btnTema3: Button? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,6 +25,9 @@ class TriarTema: AppCompatActivity(), View.OnClickListener {
         //declaracion botones
         btnAtras = findViewById<ImageView>(R.id.atras)
         btnAjustes = findViewById<ImageButton>(R.id.ajustesTema)
+        btnTema1 = findViewById<Button>(R.id.tema1)
+        btnTema2 = findViewById<Button>(R.id.tema2)
+        btnTema3 = findViewById<Button>(R.id.tema3)
         btnAtras!!.setOnClickListener(this)
         btnAjustes!!.setOnClickListener(this)
 
@@ -45,6 +52,24 @@ class TriarTema: AppCompatActivity(), View.OnClickListener {
             R.id.ajustesTema -> {
                 val intent = Intent(this, Ajustes::class.java)
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                startActivity(intent)
+            }
+            R.id.tema1 -> {
+                val intent = Intent(this, Quiz::class.java)
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                intent.putExtra("Tema", "Historia")
+                startActivity(intent)
+            }
+            R.id.tema2 -> {
+                val intent = Intent(this, Quiz::class.java)
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                intent.putExtra("Tema", "Entretenimiento")
+                startActivity(intent)
+            }
+            R.id.tema3 -> {
+                val intent = Intent(this, Quiz::class.java)
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                intent.putExtra("Tema", "Ciencia")
                 startActivity(intent)
             }
         }
