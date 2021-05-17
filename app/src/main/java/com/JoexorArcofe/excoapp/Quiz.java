@@ -69,15 +69,16 @@ public class Quiz extends AppCompatActivity {
     }
 
     private void updateQuestions() {
+        Intent i = getIntent();
+        String tema = i.getStringExtra("Tema");
         if (total > MAX_PREGUNTES) {
             Intent intent = new Intent(this, Resultats.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             intent.putExtra("correcte", String.valueOf(correct));
             intent.putExtra("incorrecte",String.valueOf(wrong));
+            intent.putExtra("Tema",tema);
             startActivity(intent);
         } else {
-            Intent i = getIntent();
-            String tema = i.getStringExtra("Tema");
             if(tema.equals("Historia")) {
                 reference = FirebaseDatabase.getInstance().getReference().child("Questions").child("Historia").child(String.valueOf(total));
             }else if(tema.equals("Entretenimiento")) {
