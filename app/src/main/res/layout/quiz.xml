@@ -94,7 +94,7 @@
         android:layout_height="101dp"
         android:text="TextView"
         android:textColor="@color/black"
-        android:textSize="25sp"
+        android:textSize="22sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.491"
