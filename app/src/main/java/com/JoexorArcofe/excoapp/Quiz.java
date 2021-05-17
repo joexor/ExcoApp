@@ -76,7 +76,17 @@ public class Quiz extends AppCompatActivity {
             intent.putExtra("incorrecte",String.valueOf(wrong));
             startActivity(intent);
         } else {
-            reference = FirebaseDatabase.getInstance().getReference().child("Questions").child(String.valueOf(total));
+            Intent i = getIntent();
+            String tema = i.getStringExtra("Tema");
+            if(tema.equals("Historia")) {
+                reference = FirebaseDatabase.getInstance().getReference().child("Questions").child("Historia").child(String.valueOf(total));
+            }else if(tema.equals("Entretenimiento")) {
+                reference = FirebaseDatabase.getInstance().getReference().child("Questions").child("Entretenimiento").child(String.valueOf(total));
+            }else if(tema.equals("Ciencia")) {
+                reference = FirebaseDatabase.getInstance().getReference().child("Questions").child("Ciencia").child(String.valueOf(total));
+            }//else{
+                //reference = FirebaseDatabase.getInstance().getReference().child("Questions").child(String.valueOf(total));
+            //}
             reference.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -84,7 +94,7 @@ public class Quiz extends AppCompatActivity {
                     Preguntes question = new Preguntes(snapshot.child("Question").getValue().toString(),
                             snapshot.child("Option1").getValue().toString(), snapshot.child("Option2").getValue().toString(),
                             snapshot.child("Option3").getValue().toString(), snapshot.child("Option4").getValue().toString(),
-                            snapshot.child("Answere").getValue().toString());
+                            snapshot.child("Answer").getValue().toString());
 
                     numQuestion.setText(total+"/"+MAX_PREGUNTES);
                     pregunta.setText(question.getQuestion());
