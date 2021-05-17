@@ -28,6 +28,9 @@ class TriarTema: AppCompatActivity(), View.OnClickListener {
         btnTema1 = findViewById<Button>(R.id.tema1)
         btnTema2 = findViewById<Button>(R.id.tema2)
         btnTema3 = findViewById<Button>(R.id.tema3)
+        btnTema1!!.setOnClickListener(this)
+        btnTema2!!.setOnClickListener(this)
+        btnTema3!!.setOnClickListener(this)
         btnAtras!!.setOnClickListener(this)
         btnAjustes!!.setOnClickListener(this)
 
