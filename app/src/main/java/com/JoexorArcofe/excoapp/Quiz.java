@@ -112,7 +112,7 @@ public class Quiz extends AppCompatActivity {
                             handler.postDelayed(() -> {
                                 Toast.makeText(Quiz.this, "Resposta Correcte", Toast.LENGTH_SHORT).show();
                                 correct++;
-                                r1.setBackgroundColor(Color.parseColor("#03A9F4"));
+                                //r1.setBackgroundColor(Color.parseColor("#03A9F4"));
                                 total++;
                                 updateQuestions();
                             }, 1000);
@@ -136,10 +136,10 @@ public class Quiz extends AppCompatActivity {
 
                             Handler handler = new Handler();
                             handler.postDelayed(() -> {
-                                r1.setBackgroundColor(Color.parseColor("#03A9F4"));
+                                /*r1.setBackgroundColor(Color.parseColor("#03A9F4"));
                                 r2.setBackgroundColor(Color.parseColor("#03A9F4"));
                                 r3.setBackgroundColor(Color.parseColor("#03A9F4"));
-                                r4.setBackgroundColor(Color.parseColor("#03A9F4"));
+                                r4.setBackgroundColor(Color.parseColor("#03A9F4"));*/
                                 total++;
                                 updateQuestions();
                             }, 1000);
@@ -150,13 +150,12 @@ public class Quiz extends AppCompatActivity {
 
                     r2.setOnClickListener(v -> {
                         if (r2.getText().toString().equals(question.getAnswer())) {
-                        //if (r2.getText().toString().equals(r)) {
                             r2.setBackgroundColor(Color.GREEN);
                             Handler handler = new Handler();
                             handler.postDelayed(() -> {
                                 Toast.makeText(Quiz.this, "Resposta Correcte", Toast.LENGTH_SHORT).show();
                                 correct++;
-                                r2.setBackgroundColor(Color.parseColor("#03A9F4"));
+                                //r2.setBackgroundColor(Color.parseColor("#03A9F4"));
                                 total++;
                                 updateQuestions();
                             }, 1000);
@@ -180,10 +179,10 @@ public class Quiz extends AppCompatActivity {
 
                             Handler handler = new Handler();
                             handler.postDelayed(() -> {
-                                r1.setBackgroundColor(Color.parseColor("#03A9F4"));
+                                /*r1.setBackgroundColor(Color.parseColor("#03A9F4"));
                                 r2.setBackgroundColor(Color.parseColor("#03A9F4"));
                                 r3.setBackgroundColor(Color.parseColor("#03A9F4"));
-                                r4.setBackgroundColor(Color.parseColor("#03A9F4"));
+                                r4.setBackgroundColor(Color.parseColor("#03A9F4"));*/
                                 total++;
                                 updateQuestions();
                             }, 1000);
@@ -198,7 +197,7 @@ public class Quiz extends AppCompatActivity {
                             handler.postDelayed(() -> {
                                 Toast.makeText(Quiz.this, "Resposta Correcte", Toast.LENGTH_SHORT).show();
                                 correct++;
-                                r3.setBackgroundColor(Color.parseColor("#03A9F4"));
+                                //r3.setBackgroundColor(Color.parseColor("#03A9F4"));
                                 total++;
                                 updateQuestions();
                             }, 1000);
@@ -222,10 +221,10 @@ public class Quiz extends AppCompatActivity {
 
                             Handler handler = new Handler();
                             handler.postDelayed(() -> {
-                                r1.setBackgroundColor(Color.parseColor("#03A9F4"));
+                                /*r1.setBackgroundColor(Color.parseColor("#03A9F4"));
                                 r2.setBackgroundColor(Color.parseColor("#03A9F4"));
                                 r3.setBackgroundColor(Color.parseColor("#03A9F4"));
-                                r4.setBackgroundColor(Color.parseColor("#03A9F4"));
+                                r4.setBackgroundColor(Color.parseColor("#03A9F4"));*/
                                 total++;
                                 updateQuestions();
                             }, 1000);
@@ -240,7 +239,7 @@ public class Quiz extends AppCompatActivity {
                             handler.postDelayed(() -> {
                                 Toast.makeText(Quiz.this, "Resposta Correcte", Toast.LENGTH_SHORT).show();
                                 correct++;
-                                r4.setBackgroundColor(Color.parseColor("#03A9F4"));
+                                //r4.setBackgroundColor(Color.parseColor("#03A9F4"));
                                 total++;
                                 updateQuestions();
                             }, 1000);
@@ -264,10 +263,10 @@ public class Quiz extends AppCompatActivity {
 
                             Handler handler = new Handler();
                             handler.postDelayed(() -> {
-                                r1.setBackgroundColor(Color.parseColor("#03A9F4"));
+                                /*r1.setBackgroundColor(Color.parseColor("#03A9F4"));
                                 r2.setBackgroundColor(Color.parseColor("#03A9F4"));
                                 r3.setBackgroundColor(Color.parseColor("#03A9F4"));
-                                r4.setBackgroundColor(Color.parseColor("#03A9F4"));
+                                r4.setBackgroundColor(Color.parseColor("#03A9F4"));*/
                                 total++;
                                 updateQuestions();
                             }, 1000);
