@@ -42,6 +42,9 @@ class TriarTema: AppCompatActivity(), View.OnClickListener {
         val user = currentuser?.email?.split('@')
         usuario.text = user?.get(0)
 
+        btnTema1!!.setText(Tema1)
+        btnTema2!!.setText(Tema2)
+        btnTema3!!.setText(Tema3)
     }
 
     override fun onClick(v: View?) {
@@ -76,5 +79,11 @@ class TriarTema: AppCompatActivity(), View.OnClickListener {
                 startActivity(intent)
             }
         }
+    }
+
+    companion object {
+        const val Tema1 = "Historia"
+        const val Tema2 = "Entretenimiento"
+        const val Tema3 = "Ciencia"
     }
 }

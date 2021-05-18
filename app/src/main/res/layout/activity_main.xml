@@ -9,8 +9,8 @@
 
     <Button
         android:id="@+id/btnLogIn"
-        android:layout_width="93dp"
-        android:layout_height="45dp"
+        android:layout_width="93sp"
+        android:layout_height="45sp"
         android:text="Log In"
         android:textStyle="bold"
         android:typeface="serif"
@@ -37,12 +37,12 @@
 
     <TextView
         android:id="@+id/textView2"
-        android:layout_width="34dp"
-        android:layout_height="31dp"
+        android:layout_width="34sp"
+        android:layout_height="31sp"
         android:text="@string/o"
         android:textAlignment="center"
         android:textColor="@color/black"
-        android:textSize="21dp"
+        android:textSize="21sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -92,8 +92,8 @@
 
     <ImageView
         android:id="@+id/imageView3"
-        android:layout_width="326dp"
-        android:layout_height="159dp"
+        android:layout_width="326sp"
+        android:layout_height="159sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.494"
@@ -104,8 +104,8 @@
 
     <ImageView
         android:id="@+id/imageView5"
-        android:layout_width="47dp"
-        android:layout_height="45dp"
+        android:layout_width="47sp"
+        android:layout_height="45sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.2"
@@ -117,8 +117,8 @@
 
     <ImageView
         android:id="@+id/imageView6"
-        android:layout_width="47dp"
-        android:layout_height="45dp"
+        android:layout_width="47sp"
+        android:layout_height="45sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.2"
