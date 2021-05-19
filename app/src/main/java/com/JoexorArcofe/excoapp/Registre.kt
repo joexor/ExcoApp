@@ -16,6 +16,7 @@ class Registre: AppCompatActivity(), View.OnClickListener {
     private var btnVolverInicio: Button? = null
     private var user: EditText? = null
     private var password: EditText? = null
+    private var repeatPwd: EditText? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,6 +41,7 @@ class Registre: AppCompatActivity(), View.OnClickListener {
     {
         user = findViewById(R.id.editTextTextEmailAddress)
         password = findViewById(R.id.editTextNumberPassword)
+        repeatPwd = findViewById(R.id.repeatPassword)
     }
 
     private fun setup() {
@@ -49,28 +51,46 @@ class Registre: AppCompatActivity(), View.OnClickListener {
          */
         btnRegistre?.setOnClickListener{
             setDataFromTexBox()
+            println("CONTRA: Contraseña:" + password?.text?.toString())
+            println("CONTRA: Repetir Contarseña:" + repeatPwd?.text?.toString())
             if (user?.text?.isNotEmpty()!! && password?.text?.isNotEmpty()!!){
-                FirebaseAuth.getInstance().createUserWithEmailAndPassword(user!!.text.toString(),
-                    password!!.text.toString()).addOnCompleteListener {
-                    if (it.isSuccessful){
-                        showHome(it.result?.user?.email ?: "", Inici.ProviderType.BASIC)
-                    }else{
-                        showAlert()
-                    }
+                /*if(password?.text?.toString().equals(repeatPwd?.text?.toString())!!) {*/
+                            FirebaseAuth.getInstance().createUserWithEmailAndPassword(user!!.text.toString(),
+                                    password!!.text.toString()).addOnCompleteListener {
+                                if (it.isSuccessful) {
+                                    showHome(it.result?.user?.email ?: "", Inici.ProviderType.BASIC)
+                                } else {
+                                    showAlert()
+                                }
 
-                }
+                            }
+                        /*}else{
+                    val builder = AlertDialog.Builder(this)
+                    builder.setTitle("Error")
+                    builder.setMessage("La contrasña no coincide")
+                    builder.setPositiveButton("Aceptar",null)
+                    val dialog: AlertDialog = builder.create()
+                    dialog.show()
+                }*/
+            }else{
+                val builder = AlertDialog.Builder(this)
+                builder.setTitle("Error")
+                builder.setMessage("Los campos de usuario i/o contraseña estan vacios")
+                builder.setPositiveButton("Aceptar",null)
+                val dialog: AlertDialog = builder.create()
+                dialog.show()
             }
         }
     }
 
     /**
-     * Classe d'alerta per quan tenim un error al iniciar sessió
+     * Classe d'alerta per quan tenim un error al registar-se
      */
     private fun showAlert(){
 
         val builder = AlertDialog.Builder(this)
         builder.setTitle("Error")
-        builder.setMessage("S'ha produït un error en l'autentificació al usuari")
+        builder.setMessage("S'ha produït un error al registrar l'usuari")
         builder.setPositiveButton("Aceptar",null)
         val dialog: AlertDialog = builder.create()
         dialog.show()
