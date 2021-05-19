@@ -51,8 +51,6 @@ class Registre: AppCompatActivity(), View.OnClickListener {
          */
         btnRegistre?.setOnClickListener{
             setDataFromTexBox()
-            println("CONTRA: Contraseña:" + password?.text?.toString())
-            println("CONTRA: Repetir Contarseña:" + repeatPwd?.text?.toString())
             if (user?.text?.isNotEmpty()!! && password?.text?.isNotEmpty()!!){
                 if(password?.text?.toString().equals(repeatPwd?.text?.toString())!!) {
                             FirebaseAuth.getInstance().createUserWithEmailAndPassword(user!!.text.toString(),password!!.text.toString()).addOnCompleteListener {
