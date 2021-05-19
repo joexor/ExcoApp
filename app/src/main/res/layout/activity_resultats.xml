@@ -52,18 +52,18 @@
         app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/engranaje2" />
 
-    <ImageButton
-        android:id="@+id/imageButton3"
-        android:layout_width="80sp"
-        android:layout_height="71sp"
-        android:scaleType="fitStart"
+    <ImageView
+        android:id="@+id/UserImage"
+        android:layout_width="80dp"
+        android:layout_height="71dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.001"
-        app:srcCompat="@drawable/usuario" />
+        app:srcCompat="@drawable/usuario"
+        android:scaleType="fitStart"/>
 
     <TextView
         android:id="@+id/TitolResultat"

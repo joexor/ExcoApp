@@ -54,9 +54,8 @@ class Registre: AppCompatActivity(), View.OnClickListener {
             println("CONTRA: Contraseña:" + password?.text?.toString())
             println("CONTRA: Repetir Contarseña:" + repeatPwd?.text?.toString())
             if (user?.text?.isNotEmpty()!! && password?.text?.isNotEmpty()!!){
-                /*if(password?.text?.toString().equals(repeatPwd?.text?.toString())!!) {*/
-                            FirebaseAuth.getInstance().createUserWithEmailAndPassword(user!!.text.toString(),
-                                    password!!.text.toString()).addOnCompleteListener {
+                if(password?.text?.toString().equals(repeatPwd?.text?.toString())!!) {
+                            FirebaseAuth.getInstance().createUserWithEmailAndPassword(user!!.text.toString(),password!!.text.toString()).addOnCompleteListener {
                                 if (it.isSuccessful) {
                                     showHome(it.result?.user?.email ?: "", Inici.ProviderType.BASIC)
                                 } else {
@@ -64,14 +63,14 @@ class Registre: AppCompatActivity(), View.OnClickListener {
                                 }
 
                             }
-                        /*}else{
+                        }else{
                     val builder = AlertDialog.Builder(this)
                     builder.setTitle("Error")
                     builder.setMessage("La contrasña no coincide")
                     builder.setPositiveButton("Aceptar",null)
                     val dialog: AlertDialog = builder.create()
                     dialog.show()
-                }*/
+                }
             }else{
                 val builder = AlertDialog.Builder(this)
                 builder.setTitle("Error")

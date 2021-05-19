@@ -9,7 +9,7 @@
 
     <View
         android:id="@+id/view"
-        android:layout_width="416dp"
+        android:layout_width="match_parent"
         android:layout_height="72dp"
         android:background="@color/Secundary"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -50,18 +50,18 @@
         app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/engranaje2" />
 
-    <ImageButton
-        android:id="@+id/imageButton3"
+    <ImageView
+        android:id="@+id/UserImage"
         android:layout_width="80dp"
         android:layout_height="71dp"
-        android:scaleType="fitStart"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.001"
-        app:srcCompat="@drawable/usuario" />
+        app:srcCompat="@drawable/usuario"
+        android:scaleType="fitStart"/>
 
     <Button
         android:id="@+id/tema1"
