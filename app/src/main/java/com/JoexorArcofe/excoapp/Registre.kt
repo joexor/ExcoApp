@@ -64,7 +64,7 @@ class Registre: AppCompatActivity(), View.OnClickListener {
                         }else{
                     val builder = AlertDialog.Builder(this)
                     builder.setTitle("Error")
-                    builder.setMessage("La contrasña no coincide")
+                    builder.setMessage("La contraseña no coincide")
                     builder.setPositiveButton("Aceptar",null)
                     val dialog: AlertDialog = builder.create()
                     dialog.show()
