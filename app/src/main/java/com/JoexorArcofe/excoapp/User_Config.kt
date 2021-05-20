@@ -8,7 +8,9 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.TextView
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
@@ -38,6 +40,7 @@ class User_Config : AppCompatActivity(), View.OnClickListener {
         password = findViewById<EditText>(R.id.password)
         repeatPwd = findViewById<EditText>(R.id.repeatPassword)
 
+        Firebase.auth
 
         var usuario = findViewById<TextView>(R.id.usuario)
         /*val user = currentuser?.email?.split('@')
@@ -77,14 +80,45 @@ class User_Config : AppCompatActivity(), View.OnClickListener {
                 startActivity(intent)
             }
             R.id.modificar -> {
-
-                db.collection("usuarios").document(currentuser.email.toString())
-                        .update("user",textUser?.text?.toString())
-                        .addOnSuccessListener { Log.d("", "DocumentSnapshot successfully updated!") }
-                        .addOnFailureListener { e -> Log.w("", "Error updating document", e) }
+                if (textEmail?.text?.isNotEmpty()!!  && password?.text?.isNotEmpty()!!) {
+                    if (password?.text?.toString().equals(repeatPwd?.text?.toString())!!) {
+                        FirebaseAuth.getInstance().signInWithEmailAndPassword(textEmail?.text.toString(),
+                                password?.text.toString()).addOnCompleteListener {
+                            if (it.isSuccessful) {
+                                db.collection("usuarios").document(currentuser.email.toString())
+                                        .update("user", textUser?.text?.toString())
+                                        .addOnSuccessListener { Log.d("", "DocumentSnapshot successfully updated!") }
+                                        .addOnFailureListener { e -> Log.w("", "Error updating document", e) }
+                            } else {
+                                val builder = AlertDialog.Builder(this)
+                                builder.setTitle("Error")
+                                builder.setMessage("Contraseña Incorrecta")
+                                builder.setPositiveButton("Aceptar", null)
+                                val dialog: AlertDialog = builder.create()
+                                dialog.show()
+                            }
+                        }
+                    }else{
+                        val builder = AlertDialog.Builder(this)
+                        builder.setTitle("Error")
+                        builder.setMessage("La contraseña no coincide")
+                        builder.setPositiveButton("Aceptar",null)
+                        val dialog: AlertDialog = builder.create()
+                        dialog.show()
+                    }
+                }else{
+                    val builder = AlertDialog.Builder(this)
+                    builder.setTitle("Error")
+                    builder.setMessage("Los campos de usuario i/o contraseña estan vacios")
+                    builder.setPositiveButton("Aceptar",null)
+                    val dialog: AlertDialog = builder.create()
+                    dialog.show()
+                }
             }
         }
     }
+
+
 }
 
 

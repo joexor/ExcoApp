@@ -9,6 +9,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.analytics.FirebaseAnalytics
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 
 class Registre: AppCompatActivity(), View.OnClickListener {
 
@@ -17,6 +18,7 @@ class Registre: AppCompatActivity(), View.OnClickListener {
     private var user: EditText? = null
     private var password: EditText? = null
     private var repeatPwd: EditText? = null
+    var db = FirebaseFirestore.getInstance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -55,6 +57,15 @@ class Registre: AppCompatActivity(), View.OnClickListener {
                 if(password?.text?.toString().equals(repeatPwd?.text?.toString())!!) {
                             FirebaseAuth.getInstance().createUserWithEmailAndPassword(user!!.text.toString(),password!!.text.toString()).addOnCompleteListener {
                                 if (it.isSuccessful) {
+                                    val apodo = user?.text?.split("@")
+                                    val usuario = hashMapOf(
+                                            "user" to apodo?.get(0),
+                                            "email" to user?.text.toString(),
+                                            "puntuacion" to 0
+                                    )
+
+                                    db.collection("usuarios").document(user?.text.toString())
+                                            .set(usuario)
                                     showHome(it.result?.user?.email ?: "", Inici.ProviderType.BASIC)
                                 } else {
                                     showAlert()

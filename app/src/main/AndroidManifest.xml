@@ -26,7 +26,8 @@
             android:screenOrientation="portrait"/>
         <activity android:name=".Ranking"
             android:screenOrientation="portrait"/>
-        <activity android:name=".User_Config" />
+        <activity android:name=".User_Config"
+            android:screenOrientation="portrait"/>
         <activity android:name=".Quiz"
             android:screenOrientation="portrait"/>
         <activity android:name=".MainActivity"
