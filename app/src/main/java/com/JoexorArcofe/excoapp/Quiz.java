@@ -38,6 +38,7 @@ public class Quiz extends AppCompatActivity {
     int correct = 0;
     int wrong = 0;
     DatabaseReference reference;
+    String tipo = "";
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,12 +63,13 @@ public class Quiz extends AppCompatActivity {
         r2.setBackgroundColor(Color.parseColor("#03A9F4"));
         r3.setBackgroundColor(Color.parseColor("#03A9F4"));
         r4.setBackgroundColor(Color.parseColor("#03A9F4"));
-
+        Intent i = getIntent();
+        tipo = i.getStringExtra("type");
         updateQuestions();
-
         ajustes.setOnClickListener(v->{
             Intent intent = new Intent(this, Ajustes.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            intent.putExtra("type",tipo);
             startActivity(intent);
         });
 
@@ -82,6 +84,7 @@ public class Quiz extends AppCompatActivity {
             intent.putExtra("correcte", String.valueOf(correct));
             intent.putExtra("incorrecte",String.valueOf(wrong));
             intent.putExtra("Tema",tema);
+            intent.putExtra("type",tipo);
             startActivity(intent);
         } else {
             if(tema.equals("Historia")) {

@@ -11,6 +11,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.firebase.ui.auth.AuthUI
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
 
 class Ajustes: AppCompatActivity(), View.OnClickListener {
@@ -18,6 +19,10 @@ class Ajustes: AppCompatActivity(), View.OnClickListener {
     private var btnAtras: ImageButton? = null
     private var btnLogOut: Button? = null
     private var btnConfigUser: Button? = null
+    private var currentuser = Firebase.auth.currentUser
+    private var username: String? = null
+    var db = FirebaseFirestore.getInstance()
+    private var tipo = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,13 +35,19 @@ class Ajustes: AppCompatActivity(), View.OnClickListener {
         btnLogOut!!.setOnClickListener(this)
         btnConfigUser!!.setOnClickListener(this)
 
+        intent.getStringExtra("type")?.let { tipo = it }
+
         /**
          * Part on canviem dinamicament un TextView
          */
-        var currentuser = Firebase.auth.currentUser
         var usuario = findViewById<TextView>(R.id.usuario)
-        val user = currentuser?.email?.split('@')
-        usuario.text = user?.get(0)
+        db.collection("usuarios").document(currentuser.email.toString())
+                .get().addOnSuccessListener { document ->
+                    if (document != null) {
+                        username = document.getString("user")
+                        usuario.text = username
+                    }
+                }
     }
 
 
@@ -49,6 +60,7 @@ class Ajustes: AppCompatActivity(), View.OnClickListener {
             R.id.ConfigUser -> {
                 val intent = Intent(this, User_Config::class.java)
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                intent.putExtra("type", tipo)
                 startActivity(intent)
             }
 

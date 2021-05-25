@@ -68,25 +68,18 @@ class Registre: AppCompatActivity(), View.OnClickListener {
                                             .set(usuario)
                                     showHome(it.result?.user?.email ?: "", Inici.ProviderType.BASIC)
                                 } else {
-                                    showAlert()
+                                    var mensaje = "S'ha produït un error al registrar l'usuari"
+                                    showAlert(mensaje)
                                 }
 
                             }
-                        }else{
-                    val builder = AlertDialog.Builder(this)
-                    builder.setTitle("Error")
-                    builder.setMessage("La contraseña no coincide")
-                    builder.setPositiveButton("Aceptar",null)
-                    val dialog: AlertDialog = builder.create()
-                    dialog.show()
+                }else{
+                    var mensaje = "La contraseña no coincide"
+                    showAlert(mensaje)
                 }
             }else{
-                val builder = AlertDialog.Builder(this)
-                builder.setTitle("Error")
-                builder.setMessage("Los campos de usuario i/o contraseña estan vacios")
-                builder.setPositiveButton("Aceptar",null)
-                val dialog: AlertDialog = builder.create()
-                dialog.show()
+                var mensaje = "Los campos de usuario i/o contraseña estan vacios"
+                showAlert(mensaje)
             }
         }
     }
@@ -94,11 +87,11 @@ class Registre: AppCompatActivity(), View.OnClickListener {
     /**
      * Classe d'alerta per quan tenim un error al registar-se
      */
-    private fun showAlert(){
+    private fun showAlert(mensaje: String) {
 
         val builder = AlertDialog.Builder(this)
         builder.setTitle("Error")
-        builder.setMessage("S'ha produït un error al registrar l'usuari")
+        builder.setMessage(mensaje)
         builder.setPositiveButton("Aceptar",null)
         val dialog: AlertDialog = builder.create()
         dialog.show()
@@ -112,6 +105,7 @@ class Registre: AppCompatActivity(), View.OnClickListener {
         val homeIntent  = Intent(this, Inici::class.java).apply {
             putExtra("user",user)
             putExtra("password",password.name)
+            putExtra("type","email")
         }
         startActivity(homeIntent)
     }

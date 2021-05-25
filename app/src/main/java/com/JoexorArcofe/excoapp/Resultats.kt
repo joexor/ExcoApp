@@ -8,6 +8,7 @@ import android.widget.Button
 import android.widget.ImageButton
 import android.widget.TextView
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
 
 class Resultats : AppCompatActivity(), View.OnClickListener {
@@ -17,6 +18,10 @@ class Resultats : AppCompatActivity(), View.OnClickListener {
     private var inicio: Button? = null
     private var reintentar: Button? = null
     private var ajustes: ImageButton? = null
+    private var currentuser = Firebase.auth.currentUser
+    private var username: String? = null
+    var db = FirebaseFirestore.getInstance()
+    private var tipo = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,16 +33,21 @@ class Resultats : AppCompatActivity(), View.OnClickListener {
         reintentar = findViewById<Button>(R.id.Restart)
         ajustes =  findViewById<ImageButton>(R.id.ajustesResultats)
 
-        var currentuser = Firebase.auth.currentUser
         var usuario = findViewById<TextView>(R.id.usuario)
-        val user = currentuser?.email?.split('@')
-        usuario.text = user?.get(0)
+        db.collection("usuarios").document(currentuser.email.toString())
+                .get().addOnSuccessListener { document ->
+                    if (document != null) {
+                        username = document.getString("user")
+                        usuario.text = username
+                    }
+                }
 
         val i = intent
 
         val numCorrect = i.getStringExtra("correcte")
         val numWrong = i.getStringExtra("incorrecte")
 
+        i.getStringExtra("type")?.let { tipo = it }
         correcte!!.setText(numCorrect)
         incorrecte!!.setText(numWrong)
         inicio!!.setOnClickListener(this)
@@ -52,6 +62,7 @@ class Resultats : AppCompatActivity(), View.OnClickListener {
             R.id.GoInici -> {
                 val intent = Intent(this,Inici::class.java)
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                intent.putExtra("type", tipo)
                 startActivity(intent)
             }
 
@@ -59,12 +70,14 @@ class Resultats : AppCompatActivity(), View.OnClickListener {
                 val intent = Intent(this,Quiz::class.java)
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
                 intent.putExtra("Tema",tema)
+                intent.putExtra("type", tipo)
                 startActivity(intent)
             }
 
             R.id.ajustesResultats -> {
                 val intent = Intent(this,Ajustes::class.java)
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                intent.putExtra("type", tipo)
                 startActivity(intent)
             }
         }

@@ -117,6 +117,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                         // Sign in success, update UI with the signed-in user's information
                         Log.d("SignInActivity", "signInWithCredential:success")
                         val intent = Intent(this, Inici::class.java)
+                        intent.putExtra("type", "google")
                         startActivity(intent)
                     } else {
                         // If sign in fails, display a message to the user.
@@ -173,7 +174,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         val homeIntent  = Intent(this, Inici::class.java).apply {
             putExtra("user",user)
             putExtra("password",password.name)
-            //putExtra("type","email")
+            putExtra("type","email")
         }
         startActivity(homeIntent)
     }
@@ -183,13 +184,6 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             R.id.btnRegistro -> {
                 val intent = Intent(this, Registre::class.java)
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-                startActivity(intent)
-            }
-
-            R.id.btnGoogle -> {
-                val intent = Intent(this,Inici::class.java)
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-                //intent.putExtra("type", "google")
                 startActivity(intent)
             }
         }

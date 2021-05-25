@@ -9,6 +9,7 @@ import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
 
 class TriarTema: AppCompatActivity(), View.OnClickListener {
@@ -18,6 +19,10 @@ class TriarTema: AppCompatActivity(), View.OnClickListener {
     private var btnTema1: Button? = null
     private var btnTema2: Button? = null
     private var btnTema3: Button? = null
+    private var currentuser = Firebase.auth.currentUser
+    private var username: String? = null
+    var db = FirebaseFirestore.getInstance()
+    private var tipo = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,13 +39,19 @@ class TriarTema: AppCompatActivity(), View.OnClickListener {
         btnAtras!!.setOnClickListener(this)
         btnAjustes!!.setOnClickListener(this)
 
+        intent.getStringExtra("type")?.let { tipo = it }
+
         /**
          * Part on canviem dinamicament un TextView
          */
-        var currentuser = Firebase.auth.currentUser
         var usuario = findViewById<TextView>(R.id.usuario)
-        val user = currentuser?.email?.split('@')
-        usuario.text = user?.get(0)
+        db.collection("usuarios").document(currentuser.email.toString())
+                .get().addOnSuccessListener { document ->
+                    if (document != null) {
+                        username = document.getString("user")
+                        usuario.text = username
+                    }
+                }
 
         btnTema1!!.setText(Tema1)
         btnTema2!!.setText(Tema2)
@@ -52,30 +63,35 @@ class TriarTema: AppCompatActivity(), View.OnClickListener {
             R.id.atras -> {
                 val intent = Intent(this, Inici::class.java)
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                intent.putExtra("type", "google")
                 startActivity(intent)
             }
 
             R.id.ajustesTema -> {
                 val intent = Intent(this, Ajustes::class.java)
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                intent.putExtra("type", tipo)
                 startActivity(intent)
             }
             R.id.tema1 -> {
                 val intent = Intent(this, Quiz::class.java)
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
                 intent.putExtra("Tema", "Historia")
+                intent.putExtra("type", tipo)
                 startActivity(intent)
             }
             R.id.tema2 -> {
                 val intent = Intent(this, Quiz::class.java)
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
                 intent.putExtra("Tema", "Entretenimiento")
+                intent.putExtra("type", tipo)
                 startActivity(intent)
             }
             R.id.tema3 -> {
                 val intent = Intent(this, Quiz::class.java)
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
                 intent.putExtra("Tema", "Ciencia")
+                intent.putExtra("type", tipo)
                 startActivity(intent)
             }
         }

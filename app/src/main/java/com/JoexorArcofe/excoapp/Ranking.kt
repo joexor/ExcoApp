@@ -8,6 +8,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
 
 
@@ -15,6 +16,10 @@ class Ranking: AppCompatActivity(), View.OnClickListener {
 
     private var btnAjustes: ImageButton? = null
     private var btnAtras: ImageView? = null
+    private var currentuser = Firebase.auth.currentUser
+    private var username: String? = null
+    var db = FirebaseFirestore.getInstance()
+    private var tipo = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,11 +30,16 @@ class Ranking: AppCompatActivity(), View.OnClickListener {
         btnAjustes!!.setOnClickListener(this)
         btnAtras!!.setOnClickListener(this)
 
+        intent.getStringExtra("type")?.let { tipo = it }
 
-        var currentuser = Firebase.auth.currentUser
         var usuario = findViewById<TextView>(R.id.usuario)
-        val user = currentuser?.email?.split('@')
-        usuario.text = user?.get(0)
+        db.collection("usuarios").document(currentuser.email.toString())
+                .get().addOnSuccessListener { document ->
+                    if (document != null) {
+                        username = document.getString("user")
+                        usuario.text = username
+                    }
+                }
     }
 
     override fun onClick(v: View?) {
@@ -37,11 +47,13 @@ class Ranking: AppCompatActivity(), View.OnClickListener {
             R.id.atras -> {
                 val intent = Intent(this, Inici::class.java)
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                intent.putExtra("type", tipo)
                 startActivity(intent)
             }
             R.id.ajustesRanking -> {
                 val intent = Intent(this, Ajustes::class.java)
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                intent.putExtra("type", tipo)
                 startActivity(intent)
             }
         }
