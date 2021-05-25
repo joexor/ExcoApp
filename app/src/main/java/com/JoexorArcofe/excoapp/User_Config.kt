@@ -20,6 +20,7 @@ class User_Config : AppCompatActivity(), View.OnClickListener {
 
     private var btnAtras: ImageButton? = null
     private var btnModificar: Button? = null
+    private var btnCancelar: Button? = null
     private var textEmail: EditText? = null
     private var textUser: EditText? = null
     private var password: EditText? = null
@@ -35,19 +36,17 @@ class User_Config : AppCompatActivity(), View.OnClickListener {
 
         btnAtras = findViewById<ImageButton>(R.id.atras)
         btnModificar = findViewById<Button>(R.id.modificar)
+        btnCancelar = findViewById<Button>(R.id.cancelar)
         textEmail = findViewById<EditText>(R.id.email)
         textUser = findViewById<EditText>(R.id.user)
         password = findViewById<EditText>(R.id.password)
         repeatPwd = findViewById<EditText>(R.id.repeatPassword)
 
-        Firebase.auth
-
         var usuario = findViewById<TextView>(R.id.usuario)
-        /*val user = currentuser?.email?.split('@')
-        usuario.text = user?.get(0)*/
 
         btnAtras!!.setOnClickListener(this)
         btnModificar!!.setOnClickListener(this)
+        btnCancelar!!.setOnClickListener(this)
 
         db.collection("usuarios").document(currentuser.email.toString())
                 .get().addOnSuccessListener { document ->
@@ -57,7 +56,6 @@ class User_Config : AppCompatActivity(), View.OnClickListener {
                         textEmail!!.setText(correo)
                         textUser!!.setText(username)
                         usuario.text = username
-                        Log.d("", "DocumentSnapshot data: ${document.data}")
                     } else {
                         Log.d("", "No such document")
                     }
@@ -66,9 +64,9 @@ class User_Config : AppCompatActivity(), View.OnClickListener {
                     Log.d("", "get failed with ", exception)
                 }
 
-        println("CORREO:" + correo)
+        /*println("CORREO:" + correo)
         println("USUARIO:" + username)
-        /*textEmail!!.setText(correo)
+        textEmail!!.setText(correo)
         textUser!!.setText(username)*/
     }
 
@@ -89,6 +87,9 @@ class User_Config : AppCompatActivity(), View.OnClickListener {
                                         .update("user", textUser?.text?.toString())
                                         .addOnSuccessListener { Log.d("", "DocumentSnapshot successfully updated!") }
                                         .addOnFailureListener { e -> Log.w("", "Error updating document", e) }
+                                val intent = Intent(this, User_Config::class.java)
+                                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                                startActivity(intent)
                             } else {
                                 val builder = AlertDialog.Builder(this)
                                 builder.setTitle("Error")
@@ -114,6 +115,24 @@ class User_Config : AppCompatActivity(), View.OnClickListener {
                     val dialog: AlertDialog = builder.create()
                     dialog.show()
                 }
+            }
+            R.id.cancelar -> {
+                db.collection("usuarios").document(currentuser.email.toString())
+                        .get().addOnSuccessListener { document ->
+                            if (document != null) {
+                                username = document.getString("user")
+                                correo = document.getString("email")
+                                textEmail!!.setText(correo)
+                                textUser!!.setText(username)
+                                password!!.setText("")
+                                repeatPwd!!.setText("")
+                            } else {
+                                Log.d("", "No such document")
+                            }
+                        }
+                        .addOnFailureListener { exception ->
+                            Log.d("", "get failed with ", exception)
+                        }
             }
         }
     }

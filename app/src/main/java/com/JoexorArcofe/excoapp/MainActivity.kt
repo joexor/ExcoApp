@@ -173,6 +173,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         val homeIntent  = Intent(this, Inici::class.java).apply {
             putExtra("user",user)
             putExtra("password",password.name)
+            //putExtra("type","email")
         }
         startActivity(homeIntent)
     }
@@ -188,6 +189,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             R.id.btnGoogle -> {
                 val intent = Intent(this,Inici::class.java)
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                //intent.putExtra("type", "google")
                 startActivity(intent)
             }
         }
