@@ -20,16 +20,14 @@ class Resultats : AppCompatActivity(), View.OnClickListener {
     private var ajustes: ImageButton? = null
     private var currentuser = Firebase.auth.currentUser
     private var username: String? = null
-    /*private var puntuacion: Int? = 0
-    private var aciertos: Int? = 0
-    private var errores: Int? = 0*/
+    private var puntuacion: String? = null
+
     var db = FirebaseFirestore.getInstance()
     private var tipo = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_resultats)
-
         correcte =  findViewById<TextView>(R.id.NumAciertos)
         incorrecte =  findViewById<TextView>(R.id.NumFallos)
         inicio = findViewById<Button>(R.id.GoInici)
@@ -42,6 +40,7 @@ class Resultats : AppCompatActivity(), View.OnClickListener {
                     if (document != null) {
                         username = document.getString("user")
                         usuario.text = username
+                        //puntuacion = document.getString("puntuacion")
                     }
                 }
 
@@ -50,17 +49,23 @@ class Resultats : AppCompatActivity(), View.OnClickListener {
         val numCorrect = i.getStringExtra("correcte")
         val numWrong = i.getStringExtra("incorrecte")
 
-        /*db.collection("ranking").document(currentuser.email.toString())
+
+        db.collection("ranking").document(currentuser.email.toString())
                 .get().addOnSuccessListener { document ->
+                    println("WEEEEEE")
                     if (document != null) {
-                        puntuacion = Integer.valueOf(document.getString("puntuacion"))
+                        println("Entra")
+                        puntuacion = document.getString("puntuacion")
+                        println("PUNTOS1:"  + puntuacion)
+                        val suma = numCorrect?.toInt()?.let { puntuacion?.toInt()?.plus(it) }
+                        println("SUMA:" + suma)
+                        puntuacion = suma.toString()
+                        println("PUNTOS2:" + puntuacion)
+                        db.collection("ranking").document(currentuser.email.toString())
+                                .update("puntuacion", puntuacion)
                     }
                 }
 
-        val puntuacionTotal = puntuacion?.plus(Integer.valueOf(numCorrect))
-        db.collection("ranking").document(currentuser.email.toString())
-                .update("puntuacion", puntuacionTotal)
-*/
         i.getStringExtra("type")?.let { tipo = it }
         correcte!!.setText(numCorrect)
         incorrecte!!.setText(numWrong)
