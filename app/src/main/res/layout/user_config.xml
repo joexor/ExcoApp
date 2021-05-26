@@ -104,6 +104,7 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPassword"
+        android:hint="Contraseña"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.597"
@@ -156,6 +157,7 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPassword"
+        android:hint="Repite la Contraseña"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.597"
@@ -206,10 +208,10 @@
         app:srcCompat="@drawable/candado" />
 
     <TextView
-        android:id="@+id/textView9"
+        android:id="@+id/textRepeatContrasenya"
         android:layout_width="221dp"
         android:layout_height="29dp"
-        android:text="Repetir Contrasenya"
+        android:text="Repetir Contraseña"
         android:textColor="@color/black"
         android:textStyle="bold"
         android:typeface="serif"
@@ -222,11 +224,11 @@
         app:layout_constraintVertical_bias="0.717" />
 
     <TextView
-        android:id="@+id/textView7"
+        android:id="@+id/TextContrasenya"
         android:layout_width="141dp"
         android:layout_height="29dp"
         android:textColor="@color/black"
-        android:text="Contrasenya"
+        android:text="Contraseña"
         android:textStyle="bold"
         android:typeface="serif"
         android:textSize="20sp"

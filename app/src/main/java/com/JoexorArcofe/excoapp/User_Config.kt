@@ -4,10 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import android.widget.Button
-import android.widget.EditText
-import android.widget.ImageButton
-import android.widget.TextView
+import android.widget.*
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isInvisible
@@ -26,6 +23,10 @@ class User_Config : AppCompatActivity(), View.OnClickListener {
     private var textUser: EditText? = null
     private var password: EditText? = null
     private var repeatPwd: EditText? = null
+    private var textContra: TextView? = null
+    private var textRepeatContra: TextView? = null
+    private var iconoPassword: ImageView? = null
+    private var iconoRepeatPassword: ImageView? = null
     private var currentuser = Firebase.auth.currentUser
     private var username: String? = null
     private var correo: String? = null
@@ -43,6 +44,10 @@ class User_Config : AppCompatActivity(), View.OnClickListener {
         textUser = findViewById<EditText>(R.id.user)
         password = findViewById<EditText>(R.id.password)
         repeatPwd = findViewById<EditText>(R.id.repeatPassword)
+        textContra = findViewById<TextView>(R.id.TextContrasenya)
+        textRepeatContra = findViewById<TextView>(R.id.textRepeatContrasenya)
+        iconoPassword = findViewById<ImageView>(R.id.passwordIcon1)
+        iconoRepeatPassword = findViewById<ImageView>(R.id.passwordIcon2)
 
         var usuario = findViewById<TextView>(R.id.usuario)
 
@@ -67,7 +72,22 @@ class User_Config : AppCompatActivity(), View.OnClickListener {
                 }
 
         intent.getStringExtra("type")?.let { tipo = it }
-        println("TIPO:" + tipo)
+
+        if(tipo.equals("email")) {
+            password!!.visibility = View.VISIBLE
+            repeatPwd!!.visibility = View.VISIBLE
+            textContra!!.visibility = View.VISIBLE
+            textRepeatContra!!.visibility = View.VISIBLE
+            iconoPassword!!.visibility = View.VISIBLE
+            iconoRepeatPassword!!.visibility = View.VISIBLE
+        }else{
+            password!!.visibility = View.INVISIBLE
+            repeatPwd!!.visibility = View.INVISIBLE
+            textContra!!.visibility = View.INVISIBLE
+            textRepeatContra!!.visibility = View.INVISIBLE
+            iconoPassword!!.visibility = View.INVISIBLE
+            iconoRepeatPassword!!.visibility = View.INVISIBLE
+        }
     }
 
     override fun onClick(v: View?) {
@@ -118,7 +138,6 @@ class User_Config : AppCompatActivity(), View.OnClickListener {
                         dialog.show()
                     }
                 }else{
-                    //password
                     db.collection("usuarios").document(currentuser.email.toString())
                             .update("user", textUser?.text?.toString())
                             .addOnSuccessListener { Log.d("", "DocumentSnapshot successfully updated!") }
