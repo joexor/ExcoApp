@@ -20,6 +20,9 @@ class Resultats : AppCompatActivity(), View.OnClickListener {
     private var ajustes: ImageButton? = null
     private var currentuser = Firebase.auth.currentUser
     private var username: String? = null
+    /*private var puntuacion: Int? = 0
+    private var aciertos: Int? = 0
+    private var errores: Int? = 0*/
     var db = FirebaseFirestore.getInstance()
     private var tipo = ""
 
@@ -47,6 +50,17 @@ class Resultats : AppCompatActivity(), View.OnClickListener {
         val numCorrect = i.getStringExtra("correcte")
         val numWrong = i.getStringExtra("incorrecte")
 
+        /*db.collection("ranking").document(currentuser.email.toString())
+                .get().addOnSuccessListener { document ->
+                    if (document != null) {
+                        puntuacion = Integer.valueOf(document.getString("puntuacion"))
+                    }
+                }
+
+        val puntuacionTotal = puntuacion?.plus(Integer.valueOf(numCorrect))
+        db.collection("ranking").document(currentuser.email.toString())
+                .update("puntuacion", puntuacionTotal)
+*/
         i.getStringExtra("type")?.let { tipo = it }
         correcte!!.setText(numCorrect)
         incorrecte!!.setText(numWrong)

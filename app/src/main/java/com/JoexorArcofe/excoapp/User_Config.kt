@@ -19,7 +19,7 @@ class User_Config : AppCompatActivity(), View.OnClickListener {
     private var btnAtras: ImageButton? = null
     private var btnModificar: Button? = null
     private var btnCancelar: Button? = null
-    private var textEmail: EditText? = null
+    private var textEmail: TextView? = null
     private var textUser: EditText? = null
     private var password: EditText? = null
     private var repeatPwd: EditText? = null
@@ -40,7 +40,7 @@ class User_Config : AppCompatActivity(), View.OnClickListener {
         btnAtras = findViewById<ImageButton>(R.id.atras)
         btnModificar = findViewById<Button>(R.id.modificar)
         btnCancelar = findViewById<Button>(R.id.cancelar)
-        textEmail = findViewById<EditText>(R.id.email)
+        textEmail = findViewById<TextView>(R.id.email)
         textUser = findViewById<EditText>(R.id.user)
         password = findViewById<EditText>(R.id.password)
         repeatPwd = findViewById<EditText>(R.id.repeatPassword)
@@ -99,15 +99,15 @@ class User_Config : AppCompatActivity(), View.OnClickListener {
             }
             R.id.modificar -> {
                 if(tipo.equals("email")) {
-                    if (textEmail?.text?.isNotEmpty()!! && password?.text?.isNotEmpty()!!) {
+                    if (textEmail?.text?.isNotEmpty()!! && password?.text?.isNotEmpty()!! && textUser?.text?.isNotEmpty()!!) {
                         if (password?.text?.toString().equals(repeatPwd?.text?.toString())!!) {
                             FirebaseAuth.getInstance().signInWithEmailAndPassword(textEmail?.text.toString(),
                                     password?.text.toString()).addOnCompleteListener {
                                 if (it.isSuccessful) {
                                     db.collection("usuarios").document(currentuser.email.toString())
                                             .update("user", textUser?.text?.toString())
-                                            .addOnSuccessListener { Log.d("", "DocumentSnapshot successfully updated!") }
-                                            .addOnFailureListener { e -> Log.w("", "Error updating document", e) }
+                                    db.collection("ranking").document(currentuser.email.toString())
+                                            .update("user", textUser?.text?.toString())
                                     val intent = Intent(this, User_Config::class.java)
                                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
                                     intent.putExtra("type", tipo)
@@ -138,14 +138,16 @@ class User_Config : AppCompatActivity(), View.OnClickListener {
                         dialog.show()
                     }
                 }else{
-                    db.collection("usuarios").document(currentuser.email.toString())
-                            .update("user", textUser?.text?.toString())
-                            .addOnSuccessListener { Log.d("", "DocumentSnapshot successfully updated!") }
-                            .addOnFailureListener { e -> Log.w("", "Error updating document", e) }
-                    val intent = Intent(this, User_Config::class.java)
-                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-                    intent.putExtra("type", tipo)
-                    startActivity(intent)
+                    if(textUser?.text?.isNotEmpty()!!) {
+                        db.collection("usuarios").document(currentuser.email.toString())
+                                .update("user", textUser?.text?.toString())
+                        db.collection("ranking").document(currentuser.email.toString())
+                                .update("user", textUser?.text?.toString())
+                        val intent = Intent(this, User_Config::class.java)
+                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                        intent.putExtra("type", tipo)
+                        startActivity(intent)
+                    }
                 }
             }
             R.id.cancelar -> {

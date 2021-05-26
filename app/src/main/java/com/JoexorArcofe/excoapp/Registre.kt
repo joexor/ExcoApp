@@ -64,8 +64,14 @@ class Registre: AppCompatActivity(), View.OnClickListener {
                                             "puntuacion" to 0
                                     )
 
+                                    val rankingUser = hashMapOf(
+                                            "user" to apodo?.get(0),
+                                            "puntuacion" to 0
+                                    )
                                     db.collection("usuarios").document(user?.text.toString())
                                             .set(usuario)
+                                    db.collection("ranking").document(user?.text.toString())
+                                            .set(rankingUser)
                                     showHome(it.result?.user?.email ?: "", Inici.ProviderType.BASIC)
                                 } else {
                                     var mensaje = "S'ha produït un error al registrar l'usuari"
